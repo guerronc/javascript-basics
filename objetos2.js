@@ -21,6 +21,15 @@ function imprimirNombreEdad(persona) {
   console.log(`Hola, me llamo ${nombre} y tengo ${edad} anos de edad `);
 }
 
+function cumpleanos(persona) {
+    //persona.edad += 1;
+    return {
+        ...persona,
+        edad: persona.edad + 1,
+        titulo: 'ingeniero'
+    }
+}
+
 imprimirNombre(cesar);
 
 imprimirNombre(nina);
@@ -30,3 +39,4 @@ imprimirNombre({ nombre: "pepito" });
 imprimirNombreEdad(cesar);
 
 imprimirNombreEdad(nina);
+
