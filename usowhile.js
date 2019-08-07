@@ -5,7 +5,7 @@ var cesar = {
   peso: 60
 };
 
-const INCREMENTO_PESO = 0.2;
+const INCREMENTO_PESO = 0.3;
 const DIAS_AÑO = 365;
 
 console.log(`Al inicio del año ${cesar.nombre} pesa ${cesar.peso}`);
@@ -14,16 +14,20 @@ const aumentarPeso = persona => (persona.peso += INCREMENTO_PESO);
 
 const adelgazar = persona => (persona.peso -= INCREMENTO_PESO);
 
-for (let i = 1; i <= DIAS_AÑO; i++) {
-  var random = Math.random();
+const comeMucho = () => Math.random() < 0.3;
+const realizaReporte = () => Math.random() < 0.4;
 
-  if (random < 0.25) {
+var dias = 0;
+const META = cesar.peso - 3;
+
+while (cesar.peso > META) {
+  if (comeMucho()) {
     aumentarPeso(cesar);
-  } else if (random < 0.5) {
-    adelgazar(cesar);
-  } else {
-    console.log("No hizo nada");
   }
+  if (realizaReporte()) {
+    adelgazar(cesar);
+  }
+  dias += 1;
 }
 
-console.log(`Al final del año ${cesar.nombre} pesa ${cesar.peso.toFixed(2)}`);
+console.log(`Pararon ${dias} hasta que ${cesar.nombre} adelgazo ${META}`);
