@@ -39,7 +39,6 @@ class Juego {
     this.iluminarSecuencia();
     this.agregarEventosClick();
     console.log(`siguiente nivel llamada: ${this.nivel}`);
-    
   }
 
   transformaNumeroColor(numero) {
@@ -110,17 +109,17 @@ class Juego {
     const nombreColor = ev.target.dataset.color;
     const numeroColor = this.transformaColorNumero(nombreColor);
     this.iluminarColor(nombreColor);
-    
+
     if (numeroColor === this.secuencia[this.subNivel]) {
       this.subNivel++;
       if (this.subNivel === this.nivel) {
         this.nivel++;
         this.eliminarEventosClick();
-        if (this.nivel === (ULTIMO_NIVEL + 1)) {
+        if (this.nivel === ULTIMO_NIVEL + 1) {
           this.ganoJuego();
         } else {
           setTimeout(() => {
-            this.siguienteNivel();  
+            this.siguienteNivel();
           }, 2000);
         }
       }
@@ -129,32 +128,28 @@ class Juego {
     }
   }
 
-  ganoJuego(){
-    swal('Platzi', 'Felicitaciones Ganaste', 'success').then(()=>{
+  ganoJuego() {
+    swal("Platzi", "Felicitaciones Ganaste", "success").then(() => {
       this.inicializar();
-    })
+    });
   }
 
-  perdioJuego(){
-    swal('Platzi', 'Perdiste', 'error').then(()=>{
+  perdioJuego() {
+    swal("Platzi", "Perdiste", "error").then(() => {
       this.eliminarEventosClick();
       this.inicializar();
-    })
+    });
   }
 
-  toggleBtnEmpezar(){
-    if(btnEmpezar.classList.contains('hide'))
-    {
+  toggleBtnEmpezar() {
+    if (btnEmpezar.classList.contains("hide")) {
       btnEmpezar.classList.remove("hide");
-    }
-    else{
+    } else {
       btnEmpezar.classList.add("hide");
     }
-    
   }
-
 }
 
 function empezarJuego() {
-  var juego = new Juego();
+  const juego = new Juego();
 }
